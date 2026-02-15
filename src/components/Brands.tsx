@@ -1,16 +1,17 @@
 import ScrollReveal from "./ScrollReveal";
+import { useLang, t } from "@/lib/i18n";
 
-const brands = [
-  "Google", "Spotify", "Airbnb", "Stripe", "Vercel", "Figma"
-];
+const brands = ["Google", "Spotify", "Airbnb", "Stripe", "Vercel", "Figma"];
 
 const Brands = () => {
+  const { lang } = useLang();
+
   return (
     <section className="section-padding border-t border-border">
       <div className="max-w-7xl mx-auto">
         <ScrollReveal>
           <p className="text-center text-muted-foreground text-sm uppercase tracking-[0.3em] font-heading mb-12">
-            Güvenilen Markalar
+            {t("brands.label", lang)}
           </p>
         </ScrollReveal>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8 items-center">
