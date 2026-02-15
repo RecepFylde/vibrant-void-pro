@@ -1,3 +1,4 @@
+import { LangProvider } from "@/lib/i18n";
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import Stats from "@/components/Stats";
@@ -9,16 +10,18 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   return (
-    <div className="bg-background min-h-screen">
-      <Navbar />
-      <Hero />
-      <Stats />
-      <Services />
-      <Projects />
-      <Brands />
-      <FAQ />
-      <Footer />
-    </div>
+    <LangProvider>
+      <div className="bg-background min-h-screen">
+        <Navbar />
+        <Hero />
+        <Stats />
+        <Services />
+        <Projects />
+        <Brands />
+        <FAQ />
+        <Footer />
+      </div>
+    </LangProvider>
   );
 };
 

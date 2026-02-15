@@ -1,13 +1,16 @@
 import { motion } from "framer-motion";
 import ScrollReveal from "./ScrollReveal";
+import { useLang, t } from "@/lib/i18n";
 
 const Hero = () => {
+  const { lang } = useLang();
+
   return (
     <section className="relative min-h-screen flex flex-col justify-center section-padding pt-32 noise-overlay mesh-gradient overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto w-full">
         <ScrollReveal>
           <p className="text-primary font-heading text-sm md:text-base tracking-[0.3em] uppercase mb-6">
-            — Web Developer & Designer
+            {t("hero.subtitle", lang)}
           </p>
         </ScrollReveal>
 
@@ -22,11 +25,9 @@ const Hero = () => {
         <ScrollReveal delay={0.2}>
           <div className="mt-12 flex flex-col md:flex-row items-start md:items-end justify-between gap-8">
             <p className="max-w-md text-muted-foreground text-base md:text-lg leading-relaxed">
-              Modern ve performanslı web deneyimleri tasarlıyor, 
-              kullanıcı odaklı dijital çözümler üretiyorum.
+              {t("hero.desc", lang)}
             </p>
             <div className="relative">
-              {/* Spinning text */}
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 10, repeat: Infinity, ease: "linear" }}
@@ -34,15 +35,10 @@ const Hero = () => {
               >
                 <svg viewBox="0 0 100 100" className="w-full h-full">
                   <defs>
-                    <path
-                      id="circlePath"
-                      d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0"
-                    />
+                    <path id="circlePath" d="M 50, 50 m -37, 0 a 37,37 0 1,1 74,0 a 37,37 0 1,1 -74,0" />
                   </defs>
                   <text className="fill-muted-foreground text-[9px] uppercase tracking-[0.35em] font-heading">
-                    <textPath href="#circlePath">
-                      SCROLL DOWN • EXPLORE MORE •
-                    </textPath>
+                    <textPath href="#circlePath">{t("hero.scroll", lang)}</textPath>
                   </text>
                 </svg>
               </motion.div>
@@ -54,7 +50,6 @@ const Hero = () => {
         </ScrollReveal>
       </div>
 
-      {/* Decorative glow */}
       <div className="absolute top-1/4 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[150px] pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-[400px] h-[400px] bg-primary/3 rounded-full blur-[120px] pointer-events-none" />
     </section>
