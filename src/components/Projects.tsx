@@ -27,10 +27,10 @@ const Projects = () => {
         <div className="space-y-16">
           {projects.map((project, i) => (
             <ScrollReveal key={project.num} delay={i * 0.1}>
-              <motion.div className="group relative cursor-pointer" whileHover={{ scale: 1.01 }} transition={{ duration: 0.4, ease: [0.22, 1, 0.36, 1] }}>
+              <motion.div className="group relative cursor-pointer" whileHover={{ scale: 1.005 }} transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}>
                 <div className="relative overflow-hidden rounded-lg aspect-[16/9]">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-background/40 group-hover:bg-background/20 transition-colors duration-500" />
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/30 to-transparent group-hover:from-background/50 group-hover:via-background/10 transition-all duration-700" />
                   <div className="absolute top-6 left-6 font-heading text-7xl md:text-9xl font-bold text-foreground/10 group-hover:text-primary/20 transition-colors duration-500">{project.num}</div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-end justify-between">

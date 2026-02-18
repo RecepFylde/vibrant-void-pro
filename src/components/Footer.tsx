@@ -1,7 +1,7 @@
 import ScrollReveal from "./ScrollReveal";
 import { useLang, t } from "@/lib/i18n";
 
-const Footer = () => {
+const Footer = ({ onContactClick }: { onContactClick?: () => void }) => {
   const { lang } = useLang();
 
   return (
@@ -16,9 +16,9 @@ const Footer = () => {
                 {t("footer.title2", lang)}<span className="text-primary">{t("footer.title3", lang)}</span>
               </h2>
             </div>
-            <a href="mailto:hello@example.com" className="px-8 py-4 bg-primary text-primary-foreground font-heading font-semibold rounded-full hover:opacity-90 transition-opacity text-lg neon-glow">
+            <button onClick={onContactClick} className="px-8 py-4 bg-primary text-primary-foreground font-heading font-semibold rounded-full hover:opacity-90 transition-opacity text-lg neon-glow">
               {t("footer.cta", lang)}
-            </a>
+            </button>
           </div>
         </ScrollReveal>
 
