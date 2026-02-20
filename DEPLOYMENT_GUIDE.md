@@ -4,6 +4,7 @@
 - **IP Address**: 159.65.50.61
 - **User**: root
 - **Deploy Path**: /var/www/vibrant-void-pro
+- **Domain**: recephaylu.co.uk
 
 ## Prerequisites
 - SSH access to server
@@ -64,7 +65,7 @@ Add the following configuration:
 ```nginx
 server {
     listen 80;
-    server_name your-domain.com www.your-domain.com;
+    server_name recephaylu.co.uk www.recephaylu.co.uk;
 
     # Redirect HTTP to HTTPS
     return 301 https://$server_name$request_uri;
@@ -72,11 +73,11 @@ server {
 
 server {
     listen 443 ssl http2;
-    server_name your-domain.com www.your-domain.com;
+    server_name recephaylu.co.uk www.recephaylu.co.uk;
 
     # SSL certificates (will be added by certbot)
-    ssl_certificate /etc/letsencrypt/live/your-domain.com/fullchain.pem;
-    ssl_certificate_key /etc/letsencrypt/live/your-domain.com/privkey.pem;
+    ssl_certificate /etc/letsencrypt/live/recephaylu.co.uk/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/recephaylu.co.uk/privkey.pem;
 
     # Security headers
     add_header Strict-Transport-Security "max-age=31536000; includeSubDomains" always;
@@ -131,7 +132,7 @@ sudo systemctl restart nginx
 ```bash
 sudo apt-get update
 sudo apt-get install certbot python3-certbot-nginx
-sudo certbot --nginx -d your-domain.com -d www.your-domain.com
+sudo certbot --nginx -d recephaylu.co.uk -d www.recephaylu.co.uk
 ```
 
 ### 9. Setup Node.js API Server with PM2
@@ -178,8 +179,8 @@ sudo systemctl start certbot.timer
 ### 11. Update DNS Records
 Point your domain to the server IP:
 ```
-A record: your-domain.com -> 159.65.50.61
-A record: www.your-domain.com -> 159.65.50.61
+A record: recephaylu.co.uk -> 159.65.50.61
+A record: www.recephaylu.co.uk -> 159.65.50.61
 ```
 
 ## Verification
@@ -211,7 +212,7 @@ curl -X POST http://localhost:3000/api/contact \
 ```
 
 ### Test Website
-Visit: https://your-domain.com
+Visit: https://recephaylu.co.uk
 
 ## Updating Deployment
 
