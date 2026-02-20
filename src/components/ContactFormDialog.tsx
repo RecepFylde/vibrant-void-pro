@@ -49,26 +49,48 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
     e.preventDefault();
     setSending(true);
 
-    // Build mailto with form data
-    const subject = encodeURIComponent(
-      `New Project Inquiry from ${form.company || form.name}`
-    );
-    const body = encodeURIComponent(
-      `Name: ${form.name}\nEmail: ${form.email}\nCompany: ${form.company}\nIndustry: ${form.industry}\nBudget: ${form.budget}\n\nMessage:\n${form.message}`
-    );
+    try {
+      // Send form data to backend API endpoint
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          company: form.company,
+          industry: form.industry,
+          budget: form.budget,
+          message: form.message,
+        }),
+      });
 
-    window.open(`mailto:recephaylu@gmail.com?subject=${subject}&body=${body}`, "_self");
-
-    setTimeout(() => {
-      setSending(false);
-      toast.success(
+      if (response.ok) {
+        toast.success(
+          lang === "en"
+            ? "Message sent successfully! We'll contact you soon."
+            : "Mesaj başarıyla gönderildi! Yakında sizinle iletişime geçeceğiz."
+        );
+        setForm({ name: "", email: "", company: "", industry: "", budget: "", message: "" });
+        onOpenChange(false);
+      } else {
+        toast.error(
+          lang === "en"
+            ? "Failed to send message. Please try again."
+            : "Mesaj gönderilemedi. Lütfen tekrar deneyin."
+        );
+      }
+    } catch (error) {
+      console.error("Error sending form:", error);
+      toast.error(
         lang === "en"
-          ? "Your email client has been opened!"
-          : "E-posta istemciniz açıldı!"
+          ? "An error occurred. Please try again."
+          : "Bir hata oluştu. Lütfen tekrar deneyin."
       );
-      setForm({ name: "", email: "", company: "", industry: "", budget: "", message: "" });
-      onOpenChange(false);
-    }, 800);
+    } finally {
+      setSending(false);
+    }
   };
 
   return (

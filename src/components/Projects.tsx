@@ -29,9 +29,9 @@ const Projects = () => {
             <ScrollReveal key={project.num} delay={i * 0.1}>
               <motion.div className="group relative cursor-pointer" whileHover={{ scale: 1.005 }} transition={{ duration: 0.5, ease: [0.25, 0.46, 0.45, 0.94] }}>
                 <div className="relative overflow-hidden rounded-lg aspect-[16/9]">
-                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/70 via-background/30 to-transparent group-hover:from-background/50 group-hover:via-background/10 transition-all duration-700" />
-                  <div className="absolute top-6 left-6 font-heading text-7xl md:text-9xl font-bold text-foreground/10 group-hover:text-primary/20 transition-colors duration-500">{project.num}</div>
+                  <img src={project.image} alt={project.title} className="w-full h-full object-cover transition-transform duration-1000 ease-out group-hover:scale-105 brightness-50 group-hover:brightness-75 contrast-125 group-hover:contrast-100" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-background/10 to-transparent group-hover:from-background/20 group-hover:via-background/5 transition-all duration-700" />
+                  <div className="absolute top-6 left-6 font-heading text-7xl md:text-9xl font-bold text-foreground/40 group-hover:text-primary/50 transition-colors duration-500">{project.num}</div>
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="flex items-end justify-between">
                       <div>
