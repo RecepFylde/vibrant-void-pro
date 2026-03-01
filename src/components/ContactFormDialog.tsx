@@ -51,8 +51,7 @@ const ContactFormDialog = ({ open, onOpenChange }: ContactFormDialogProps) => {
 
     try {
       // Send form data to backend API endpoint
-      const response = await fetch("https://formspree.io/f/mojnbpry
-", {
+      const response = await fetch("https://formspree.io/f/mojnbpry", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
